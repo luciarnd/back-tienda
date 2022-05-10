@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:oracle:thin:@{{192.168.80.19}}:1521:orcl
-    username: alex
-    password: Magic_nava02
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: Lucia
+    password: Hiberus1125
     driverClassName: oracle.jdbc.OracleDriver

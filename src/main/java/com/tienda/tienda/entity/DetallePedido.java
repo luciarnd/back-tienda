@@ -19,7 +19,7 @@ public class DetallePedido {
 
     @Id
     @NotNull
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "id_producto")
     private Producto producto;
 

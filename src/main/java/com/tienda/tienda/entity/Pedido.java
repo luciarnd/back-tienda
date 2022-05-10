@@ -19,7 +19,7 @@ public class Pedido {
     @NotNull
     private String fecha;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "id_cliente")
     @NotNull
     private Cliente cliente;

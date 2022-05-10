@@ -6,11 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DetallePedido {
+public class DetallePedido implements Serializable {
     @Id
     @NotNull
     @ManyToOne

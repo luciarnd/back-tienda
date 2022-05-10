@@ -5,11 +5,12 @@ import lombok.*;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cliente {
+public class Cliente implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull

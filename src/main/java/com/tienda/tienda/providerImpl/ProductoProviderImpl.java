@@ -23,12 +23,12 @@ public class ProductoProviderImpl implements ProductoProvider {
     }
 
     @Override
-    public List<Producto> findAllAutors() {
+    public List<Producto> findAllProductos() {
         return productoRepo.findAll();
     }
 
     @Override
-    public Producto findPorductoById(Long id) {
+    public Producto findProductoById(Long id) {
         return productoRepo.findProductoById(id).orElseThrow(() -> new IllegalArgumentException(error));
     }
 
@@ -39,6 +39,10 @@ public class ProductoProviderImpl implements ProductoProvider {
 
     @Override
     public Producto updateProducto(Producto producto) {
-        return productoRepo.save(producto);
+        if(findProductoById(producto.getId()).equals(producto)) {
+            return productoRepo.save(producto);
+        } else {
+            throw new IllegalArgumentException(error);
+        }
     }
 }

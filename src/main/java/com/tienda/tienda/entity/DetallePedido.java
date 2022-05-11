@@ -11,7 +11,9 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@IdClass(DetallePedidoId.class)
 public class DetallePedido implements Serializable {
+
     @Id
     @NotNull
     @ManyToOne
@@ -33,3 +35,4 @@ public class DetallePedido implements Serializable {
     @NotNull
     private double precio_total;
 }
+

@@ -8,9 +8,9 @@ public interface ProductoProvider {
 
     Producto addProducto(Producto producto);
 
-    List<Producto> findAllAutors();
+    List<Producto> findAllProductos();
 
-    Producto findPorductoById(Long id);
+    Producto findProductoById(Long id);
 
     void deleteProducto(Long id);
 

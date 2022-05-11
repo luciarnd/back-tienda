@@ -30,5 +30,4 @@ public class Producto implements Serializable {
     @JoinColumn(name = "id_categoria")
     @NotNull
     private Categoria categoria;
-
 }

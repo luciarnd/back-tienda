@@ -5,9 +5,13 @@ import com.tienda.tienda.entity.Producto;
 import com.tienda.tienda.provider.PedidoProvider;
 import com.tienda.tienda.repository.PedidoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
+@Transactional
 public class PedidoProviderImpl implements PedidoProvider {
 
     @Autowired

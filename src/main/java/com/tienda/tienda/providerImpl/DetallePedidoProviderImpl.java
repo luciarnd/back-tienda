@@ -5,9 +5,13 @@ import com.tienda.tienda.entity.DetallePedidoId;
 import com.tienda.tienda.provider.DetallePedidoProvider;
 import com.tienda.tienda.repository.DetallePedidoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
+@Transactional
 public class DetallePedidoProviderImpl implements DetallePedidoProvider {
     @Autowired
     public DetallePedidoRepo detallePedidoRepo;

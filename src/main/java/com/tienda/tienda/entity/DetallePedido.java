@@ -22,7 +22,7 @@ public class DetallePedido implements Serializable {
     @NotNull
     private double precio_unidad;
 
-    @NonNull
+    @NotNull
     private double precio_total;
 
 }

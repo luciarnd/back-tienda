@@ -30,6 +30,6 @@ public class Producto implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria")
-    @NonNull
+    @NotNull
     private Categoria categoria;
 }

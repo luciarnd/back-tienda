@@ -13,6 +13,7 @@ import java.util.List;
 @Service
 @Transactional
 public class DetallePedidoProviderImpl implements DetallePedidoProvider {
+
     @Autowired
     public DetallePedidoRepo detallePedidoRepo;
 

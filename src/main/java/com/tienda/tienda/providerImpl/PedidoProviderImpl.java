@@ -41,7 +41,7 @@ public class PedidoProviderImpl implements PedidoProvider {
 
     @Override
     public Pedido updatePedido(Pedido pedido) {
-        if(findPedidoById(pedido.getId()).equals(pedido)) {
+        if(pedidoRepo.findPedidoById(pedido.getId()).isPresent()) {
             return pedidoRepo.save(pedido);
         } else {
             throw new IllegalArgumentException(error);

@@ -1,12 +1,14 @@
 package com.tienda.tienda.entity;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 public class Producto implements Serializable {
@@ -28,6 +30,6 @@ public class Producto implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria")
-    @NotNull
+    @NonNull
     private Categoria categoria;
 }

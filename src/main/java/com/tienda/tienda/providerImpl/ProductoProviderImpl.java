@@ -39,7 +39,7 @@ public class ProductoProviderImpl implements ProductoProvider {
 
     @Override
     public Producto updateProducto(Producto producto) {
-        if(findProductoById(producto.getId()).equals(producto)) {
+        if(productoRepo.findProductoById(producto.getId()).isPresent()) {
             return productoRepo.save(producto);
         } else {
             throw new IllegalArgumentException(error);

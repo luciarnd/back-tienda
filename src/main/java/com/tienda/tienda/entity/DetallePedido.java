@@ -1,30 +1,20 @@
 package com.tienda.tienda.entity;
 
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@IdClass(DetallePedidoId.class)
 public class DetallePedido implements Serializable {
 
-    @Id
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "id_pedido")
-    private Pedido pedido;
-
-    @Id
-    @NotNull
-    @ManyToMany
-    @JoinColumn(name = "id_producto")
-    private Producto producto;
+    @EmbeddedId DetallePedidoId id;
 
     @NotNull
     private int cantidad;
@@ -32,7 +22,8 @@ public class DetallePedido implements Serializable {
     @NotNull
     private double precio_unidad;
 
-    @NotNull
+    @NonNull
     private double precio_total;
+
 }
 

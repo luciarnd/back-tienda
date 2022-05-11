@@ -1,13 +1,14 @@
 package com.tienda.tienda.entity;
 
-import com.sun.istack.NotNull;
 import lombok.*;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cliente implements Serializable  {

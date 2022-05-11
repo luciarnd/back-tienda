@@ -1,14 +1,14 @@
 package com.tienda.tienda.entity;
 
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pedido implements Serializable {
@@ -20,7 +20,7 @@ public class Pedido implements Serializable {
     @NotNull
     private String fecha;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_cliente")
     @NotNull
     private Cliente cliente;

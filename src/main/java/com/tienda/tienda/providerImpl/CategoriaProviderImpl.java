@@ -12,7 +12,7 @@ public class CategoriaProviderImpl implements CategoriaProvider{
 	@Autowired
 	private CategoriaRepo categoriaRepo;
 	
-	String error = "";
+	String error = "No se encontro la categoria";
 	
 	@Override
 	public Categoria addCategoria(Categoria categoria) {

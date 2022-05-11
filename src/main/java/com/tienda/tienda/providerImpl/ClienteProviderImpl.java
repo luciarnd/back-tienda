@@ -13,7 +13,7 @@ public class ClienteProviderImpl implements ClienteProvider{
 
 	@Autowired
 	private ClienteRepo clienteRepo;
-	String error = "";
+	String error = "No se encontro el cliente.";
 	
 	@Override
 	public Cliente addClinete(Cliente cliente) {

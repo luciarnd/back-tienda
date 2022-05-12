@@ -24,7 +24,7 @@ public class PedidoController {
         return new ResponseEntity<>(pedidos, HttpStatus.OK);
     }
 
-    @GetMapping("getById/{id}")
+    @GetMapping("/getById/{id}")
     public ResponseEntity<Pedido> getPedidoById(@PathVariable("id") Long id){
         Pedido pedido = pedidoProvider.findPedidoById(id);
         return new ResponseEntity<>(pedido, HttpStatus.OK);

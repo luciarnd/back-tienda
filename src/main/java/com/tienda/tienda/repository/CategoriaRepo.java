@@ -10,5 +10,5 @@ public interface CategoriaRepo extends JpaRepository<Categoria, Long> {
 
 	Optional<Categoria> findCategoriaById(Long id);
 
-	void deleteCategoria(Long id);
+	void deleteCategoriaById(Long id);
 }

@@ -2,6 +2,7 @@ package com.tienda.tienda.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -24,7 +25,7 @@ import com.tienda.tienda.provider.CategoriaProvider;
 @RequestMapping("/categoria")
 public class CategoriaController {
 	 
-	
+	@Autowired
 	private CategoriaProvider categoriaProvider;
 	
 	@GetMapping("/all")
@@ -41,17 +42,19 @@ public class CategoriaController {
 	
 	@PostMapping("/add")
 	public ResponseEntity<Categoria> addCategoria(@RequestBody Categoria categoria){
-		return new ResponseEntity<>(categoria,HttpStatus.CREATED);
+		Categoria newCategoria= categoriaProvider.addCategoria(categoria);
+		return new ResponseEntity<>(newCategoria,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/update")
 	public ResponseEntity<Categoria> updateCategoria(@RequestBody Categoria categoria){
-		return new ResponseEntity<>(categoria, HttpStatus.OK);
+		Categoria upcategoria= categoriaProvider.updateCategoria(categoria);
+		return new ResponseEntity<>(upcategoria, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Categoria> deleteCategory(@PathVariable("id") Long id) {
-		categoriaProvider.deleteCategoria(id);
+		categoriaProvider.deleteCategoriaById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

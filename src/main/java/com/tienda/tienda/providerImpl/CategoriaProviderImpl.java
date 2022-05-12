@@ -2,12 +2,17 @@ package com.tienda.tienda.providerImpl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tienda.tienda.entity.Categoria;
 import com.tienda.tienda.provider.CategoriaProvider;
 import com.tienda.tienda.repository.CategoriaRepo;
 
+@Service
+@Transactional
 public class CategoriaProviderImpl implements CategoriaProvider{
 	@Autowired
 	private CategoriaRepo categoriaRepo;
@@ -31,8 +36,8 @@ public class CategoriaProviderImpl implements CategoriaProvider{
 	}
 
 	@Override
-	public void deleteCategoria(Long id) {
-		categoriaRepo.deleteCategoria(id);
+	public void deleteCategoriaById(Long id) {
+		categoriaRepo.deleteCategoriaById(id);
 		
 	}
 

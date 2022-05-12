@@ -21,7 +21,9 @@ public interface CategoriaProvider {
 
     Categoria findCategoriaById(Long id);
 
-    void deleteCategoria(Long id);
-
     Categoria updateCategoria(Categoria categoria);
+
+	void deleteCategoriaById(Long id);
+
+
 }

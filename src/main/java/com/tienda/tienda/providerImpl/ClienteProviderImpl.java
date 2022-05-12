@@ -2,12 +2,17 @@ package com.tienda.tienda.providerImpl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tienda.tienda.entity.Cliente;
 import com.tienda.tienda.provider.ClienteProvider;
 import com.tienda.tienda.repository.ClienteRepo;
 
+@Service
+@Transactional
 public class ClienteProviderImpl implements ClienteProvider{
 
 	@Autowired
@@ -29,10 +34,9 @@ public class ClienteProviderImpl implements ClienteProvider{
 	public Cliente findClienteById(Long id) {
 		return clienteRepo.findClienteById(id).orElseThrow(() -> new IllegalArgumentException(error));
 	}
-
 	@Override
-	public void deleteCliente(Long id) {
-		clienteRepo.deleteCliente(id);
+	public void deleteClienteById(Long id) {
+		clienteRepo.deleteClienteById(id);
 		
 	}
 

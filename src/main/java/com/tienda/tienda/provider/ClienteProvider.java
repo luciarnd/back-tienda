@@ -20,7 +20,7 @@ public interface ClienteProvider {
 
     Cliente findClienteById(Long id);
 
-    void deleteCliente(Long id);
-
     Cliente updateCliente(Cliente cliente);
+
+	void deleteClienteById(Long id);
 }

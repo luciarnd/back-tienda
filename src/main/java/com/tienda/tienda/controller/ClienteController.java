@@ -2,6 +2,7 @@ package com.tienda.tienda.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,9 @@ import com.tienda.tienda.provider.ClienteProvider;
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
-private ClienteProvider clienteProvider;
+	
+	@Autowired
+	private ClienteProvider clienteProvider;
 	
 	@GetMapping("/all")
 	public ResponseEntity<List<Cliente>> getAllClientes(){
@@ -37,17 +40,19 @@ private ClienteProvider clienteProvider;
 	
 	@PostMapping("/add")
 	public ResponseEntity<Cliente> addCliente(@RequestBody Cliente cliente){
-		return new ResponseEntity<>(cliente,HttpStatus.CREATED);
+		Cliente newCliente = clienteProvider.addClinete(cliente);
+		return new ResponseEntity<>(newCliente,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/update")
 	public ResponseEntity<Cliente> updateCliente(@RequestBody Cliente cliente){
-		return new ResponseEntity<>(cliente, HttpStatus.OK);
+		Cliente upcliente= clienteProvider.updateCliente(cliente);
+		return new ResponseEntity<>(upcliente, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Cliente> deleteCliente(@PathVariable("id") Long id) {
-		clienteProvider.deleteCliente(id);
+		clienteProvider.deleteClienteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

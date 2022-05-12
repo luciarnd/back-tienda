@@ -34,12 +34,14 @@ public class ProductoController {
 
     @PostMapping("/add")
     public ResponseEntity<Producto> addProducto(@RequestBody Producto producto){
-        return new ResponseEntity<>(producto, HttpStatus.CREATED);
+    	Producto newProducto=productoProvider.addProducto(producto);
+        return new ResponseEntity<>(newProducto, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity<Producto> updateProducto(@RequestBody Producto producto){
-        return new ResponseEntity<>(producto, HttpStatus.OK);
+    	Producto upProducto = productoProvider.updateProducto(producto);
+        return new ResponseEntity<>(upProducto, HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Producto> deleteProdcuto(@PathVariable("id") Long id){

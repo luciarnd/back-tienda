@@ -32,12 +32,14 @@ public class PedidoController {
 
     @PostMapping("/add")
     public ResponseEntity<Pedido> addPedido(@RequestBody Pedido pedido){
-        return new ResponseEntity<>(pedido, HttpStatus.CREATED);
+    	Pedido newPedido= pedidoProvider.addPedido(pedido);
+        return new ResponseEntity<>(newPedido, HttpStatus.CREATED);
     }
-
+    
     @PutMapping("/update")
     public ResponseEntity<Pedido> updatePedido(@RequestBody Pedido pedido){
-        return new ResponseEntity<>(pedido, HttpStatus.OK);
+    	Pedido upPedido=pedidoProvider.updatePedido(pedido);
+        return new ResponseEntity<>(upPedido, HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Pedido> deletePedido(@PathVariable("id") Long id){

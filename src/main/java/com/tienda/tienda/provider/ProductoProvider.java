@@ -1,5 +1,6 @@
 package com.tienda.tienda.provider;
 
+import com.tienda.tienda.dto.ProductoDTO;
 import com.tienda.tienda.entity.Producto;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,9 @@ public interface ProductoProvider {
 
     Producto addProducto(Producto producto);
 
-    List<Producto> findAllProductos();
+    List<ProductoDTO> findAllProductosDTO();
 
-    Producto findProductoById(Long id);
+    ProductoDTO findProductoById(Long id);
 
     void deleteProducto(Long id);
 

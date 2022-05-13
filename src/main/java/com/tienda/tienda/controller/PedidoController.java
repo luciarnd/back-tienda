@@ -1,5 +1,6 @@
 package com.tienda.tienda.controller;
 
+import com.tienda.tienda.dto.PedidoDTO;
 import com.tienda.tienda.entity.Pedido;
 import com.tienda.tienda.provider.PedidoProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,14 @@ public class PedidoController {
     private PedidoProvider pedidoProvider;
 
     @GetMapping("/all")
-    public ResponseEntity<List<Pedido>> getAllPedidos(){
-        List<Pedido> pedidos = pedidoProvider.findAllPedidos();
+    public ResponseEntity<List<PedidoDTO>> getAllPedidos(){
+        List<PedidoDTO> pedidos = pedidoProvider.findAllPedidosDTO();
         return new ResponseEntity<>(pedidos, HttpStatus.OK);
     }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<Pedido> getPedidoById(@PathVariable("id") Long id){
-        Pedido pedido = pedidoProvider.findPedidoById(id);
+    public ResponseEntity<PedidoDTO> getPedidoById(@PathVariable("id") Long id){
+        PedidoDTO pedido = pedidoProvider.findPedidoById(id);
         return new ResponseEntity<>(pedido, HttpStatus.OK);
     }
 

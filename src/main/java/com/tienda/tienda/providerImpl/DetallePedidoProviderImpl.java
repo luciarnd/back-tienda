@@ -22,7 +22,6 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 
 	@Override
 	public DetallePedido addDetallePedido(DetallePedido detallePedido) {
-
 		return detallePedidoRepo.save(detallePedido);
 	}
 

@@ -7,8 +7,6 @@ import com.tienda.tienda.repository.DetallePedidoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -47,4 +45,5 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 	public DetallePedido updateDetallePedido(DetallePedido detallePedido) {
 		return detallePedidoRepo.save(detallePedido);
 	}
+
 }

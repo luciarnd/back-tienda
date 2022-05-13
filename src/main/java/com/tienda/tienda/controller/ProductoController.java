@@ -1,9 +1,7 @@
 package com.tienda.tienda.controller;
 
-import com.tienda.tienda.entity.Pedido;
 import com.tienda.tienda.entity.Producto;
 import com.tienda.tienda.provider.ProductoProvider;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+
 @Component
 @RestController
 @RequestMapping("/detallepedido")
@@ -38,6 +40,7 @@ public class DetallePedidoController {
     	DetallePedido newDetallePedido= detallePedidoProvider.addDetallePedido(detallePedido);
         return new ResponseEntity<>(newDetallePedido, HttpStatus.CREATED);
     }
+  
 
     @PutMapping("/update")
     public ResponseEntity<DetallePedido> updateDetallePedido(@RequestBody DetallePedido detallePedido){

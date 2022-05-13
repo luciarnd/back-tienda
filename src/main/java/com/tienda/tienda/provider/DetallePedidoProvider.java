@@ -1,6 +1,6 @@
 package com.tienda.tienda.provider;
 
-import com.tienda.tienda.dtos.DetallePedidoDTO;
+import com.tienda.tienda.dto.DetallePedidoDTO;
 import com.tienda.tienda.entity.DetallePedido;
 
 
@@ -14,7 +14,6 @@ import java.util.List;
 @Transactional
 public interface DetallePedidoProvider {
 
-	
 
     DetallePedido addDetallePedido(DetallePedido detallePedido);
 	
@@ -26,7 +25,7 @@ public interface DetallePedidoProvider {
 
     DetallePedido updateDetallePedido(DetallePedido detallePedido);
 
-    DetallePedidoDTO detallePedidoToDetallePedidoDTO(DetallePedido detallePedido);
-    
-    DetallePedido  detallePedidoDTOtoDetallePedido(DetallePedidoDTO detallePedidoDTO);
+//    DetallePedidoDTO detallePedidoToDetallePedidoDTO(DetallePedido detallePedido);
+//    
+//    DetallePedido  detallePedidoDTOtoDetallePedido(DetallePedidoDTO detallePedidoDTO);
 }

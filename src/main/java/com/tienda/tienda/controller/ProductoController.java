@@ -1,5 +1,6 @@
 package com.tienda.tienda.controller;
 
+import com.tienda.tienda.dto.ProductoDTO;
 import com.tienda.tienda.entity.Producto;
 import com.tienda.tienda.provider.ProductoProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,14 @@ public class ProductoController {
     private ProductoProvider productoProvider;
 
     @GetMapping("/all")
-    public ResponseEntity<List<Producto>> getAllProductos() {
-        List<Producto> productos = productoProvider.findAllProductos();
+    public ResponseEntity<List<ProductoDTO>> getAllProductos() {
+        List<ProductoDTO> productos = productoProvider.findAllProductosDTO();
         return new ResponseEntity<>(productos, HttpStatus.OK);
     }
 
     @GetMapping("getById/{id}")
-    public ResponseEntity<Producto> getProductoById(@PathVariable("id") Long id){
-        Producto producto = productoProvider.findProductoById(id);
+    public ResponseEntity<ProductoDTO> getProductoById(@PathVariable("id") Long id){
+        ProductoDTO producto = productoProvider.findProductoById(id);
         return new ResponseEntity<>(producto, HttpStatus.OK);
     }
 

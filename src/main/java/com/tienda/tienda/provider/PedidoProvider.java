@@ -1,5 +1,6 @@
 package com.tienda.tienda.provider;
 
+import com.tienda.tienda.dto.PedidoDTO;
 import com.tienda.tienda.entity.Pedido;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +12,9 @@ import java.util.List;
 public interface PedidoProvider {
     Pedido addPedido(Pedido pedido);
 
-    List<Pedido> findAllPedidos();
+    List<PedidoDTO> findAllPedidosDTO();
 
-    Pedido findPedidoById(int id);
+    PedidoDTO findPedidoById(Long id);
 
     void deletePedido(int id);
 

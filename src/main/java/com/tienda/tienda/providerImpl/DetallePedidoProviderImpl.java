@@ -1,6 +1,6 @@
 package com.tienda.tienda.providerImpl;
 
-import com.tienda.tienda.dtos.DetallePedidoDTO;
+import com.tienda.tienda.dto.DetallePedidoDTO;
 import com.tienda.tienda.entity.DetallePedido;
 
 import com.tienda.tienda.provider.DetallePedidoProvider;
@@ -29,7 +29,6 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 
 	@Override
 	public DetallePedido addDetallePedido(DetallePedido detallePedido) {
-		
 		return detallePedidoRepo.save(detallePedido);
 	}
 
@@ -60,15 +59,16 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 		return detallePedidoRepo.save(detallePedido);
 	}
 	
-	public DetallePedidoDTO detallePedidoToDetallePedidoDTO(DetallePedido detallePedido) {
-		DetallePedidoDTO detallePedidoDTO = mapper.map(detallePedido, DetallePedidoDTO.class);
-		return detallePedidoDTO;
-	}
-	
-	public DetallePedido detallePedidoDTOtoDetallePedido(DetallePedidoDTO detallePedidoDTO) {
-		DetallePedido detallePedido = mapper.map(detallePedidoDTO, DetallePedido.class);
-		return detallePedido;
-		
-	}
+//	public DetallePedidoDTO detallePedidoToDetallePedidoDTO(DetallePedido detallePedido) {
+//		DetallePedidoDTO detallePedidoDTO = mapper.map(detallePedido, DetallePedidoDTO.class);
+//		return detallePedidoDTO;
+//	}
+//	
+//	public DetallePedido detallePedidoDTOtoDetallePedido(DetallePedidoDTO detallePedidoDTO) {
+//		DetallePedido detallePedido = mapper.map(detallePedidoDTO, DetallePedido.class);
+//		return detallePedido;
+//		
+//	}
+
 
 }

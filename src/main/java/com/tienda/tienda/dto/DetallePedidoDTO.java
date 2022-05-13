@@ -1,4 +1,4 @@
-package com.tienda.tienda.dtos;
+package com.tienda.tienda.dto;
 
 
 

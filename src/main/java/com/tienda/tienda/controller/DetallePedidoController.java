@@ -2,7 +2,7 @@ package com.tienda.tienda.controller;
 
 
 
-import com.tienda.tienda.dtos.DetallePedidoDTO;
+import com.tienda.tienda.dto.DetallePedidoDTO;
 import com.tienda.tienda.entity.DetallePedido;
 
 

@@ -1,8 +1,9 @@
 package com.tienda.tienda.providerImpl;
 
 import com.tienda.tienda.dto.DetallePedidoDTO;
+import com.tienda.tienda.dto.PedidoDTO;
 import com.tienda.tienda.entity.DetallePedido;
-
+import com.tienda.tienda.entity.Pedido;
 import com.tienda.tienda.provider.DetallePedidoProvider;
 import com.tienda.tienda.repository.DetallePedidoRepo;
 
@@ -14,6 +15,7 @@ import javax.transaction.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -45,8 +47,10 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 	}
 
 	@Override
-	public DetallePedido findDetallePedidoById(Long id) {
-		return detallePedidoRepo.findDetallePedidoById(id).orElseThrow(() -> new IllegalArgumentException(error));
+	public DetallePedidoDTO findDetallePedidoById(Long id) {
+		 Optional<DetallePedido> detallePedido = detallePedidoRepo.findDetallePedidoById(id);
+	        DetallePedidoDTO detallePedidoDTO = mapper.map(detallePedido, DetallePedidoDTO.class);
+	        return detallePedidoDTO;
 	}
 
 	@Override

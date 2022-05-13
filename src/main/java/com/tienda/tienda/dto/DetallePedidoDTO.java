@@ -5,24 +5,15 @@ package com.tienda.tienda.dto;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 public class DetallePedidoDTO implements Serializable {
 	
-	private Long id;
-	
-	private int cantidad;
-	
-	private double precio_unidad;
-	
-	private String pedidoId;
-	
-	private String productoNombre;
-
 	public Long getId() {
 		return id;
 	}
@@ -47,22 +38,32 @@ public class DetallePedidoDTO implements Serializable {
 		this.precio_unidad = precio_unidad;
 	}
 
-	public String getPedido() {
+	public Long getPedidoId() {
 		return pedidoId;
 	}
 
-	public void setPedido(String pedido) {
-		this.pedidoId = pedido;
+	public void setPedidoId(Long pedidoId) {
+		this.pedidoId = pedidoId;
 	}
 
-	public String getProducto() {
+	public String getProductoNombre() {
 		return productoNombre;
 	}
 
-	public void setProducto(String producto) {
-		this.productoNombre = producto;
+	public void setProductoNombre(String productoNombre) {
+		this.productoNombre = productoNombre;
 	}
+
+	private Long id;
 	
+	private int cantidad;
+	
+	private double precio_unidad;
+	
+	private Long pedidoId;
+	
+	private String productoNombre;
+
 	
 
 }

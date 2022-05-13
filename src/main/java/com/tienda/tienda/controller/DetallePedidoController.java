@@ -32,8 +32,8 @@ public class DetallePedidoController {
     }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<DetallePedido> getDetallePedidoById(@PathVariable("id") Long id){
-        DetallePedido detallePedido = detallePedidoProvider.findDetallePedidoById(id);
+    public ResponseEntity<DetallePedidoDTO> getDetallePedidoById(@PathVariable("id") Long id){
+    	DetallePedidoDTO detallePedido = detallePedidoProvider.findDetallePedidoById(id);
         return new ResponseEntity<>(detallePedido, HttpStatus.OK);
     }
 

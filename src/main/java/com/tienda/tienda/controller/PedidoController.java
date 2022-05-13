@@ -26,8 +26,8 @@ public class PedidoController {
     }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<PedidoDTO> getPedidoById(@PathVariable("id") Long id){
-        PedidoDTO pedido = pedidoProvider.findPedidoById(id);
+    public ResponseEntity<Pedido> getPedidoById(@PathVariable("id") Long id){
+        Pedido pedido = pedidoProvider.findPedidoById(id);
         return new ResponseEntity<>(pedido, HttpStatus.OK);
     }
 

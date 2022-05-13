@@ -14,7 +14,7 @@ public interface PedidoProvider {
 
     List<PedidoDTO> findAllPedidosDTO();
 
-    PedidoDTO findPedidoById(Long id);
+    Pedido findPedidoById(Long id);
 
     void deletePedido(int id);
 

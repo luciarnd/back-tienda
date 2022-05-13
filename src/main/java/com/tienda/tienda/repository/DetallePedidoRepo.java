@@ -1,6 +1,6 @@
 package com.tienda.tienda.repository;
 
-import com.tienda.tienda.dto.DetallePedidoDTO;
+
 import com.tienda.tienda.entity.DetallePedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 

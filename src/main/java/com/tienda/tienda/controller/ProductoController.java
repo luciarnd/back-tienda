@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RestController
@@ -26,8 +27,8 @@ public class ProductoController {
     }
 
     @GetMapping("getById/{id}")
-    public ResponseEntity<ProductoDTO> getProductoById(@PathVariable("id") Long id){
-        ProductoDTO producto = productoProvider.findProductoById(id);
+    public ResponseEntity<Producto> getProductoById(@PathVariable("id") Long id){
+        Producto producto = productoProvider.findProductoById(id);
         return new ResponseEntity<>(producto, HttpStatus.OK);
     }
 

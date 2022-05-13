@@ -43,10 +43,9 @@ public class ProductoProviderImpl implements ProductoProvider {
     }
 
     @Override
-    public ProductoDTO findProductoById(Long id) {
-        Optional<Producto> producto = productoRepo.findProductoById(id);
-        ProductoDTO productoDTO = modelMapper.map(producto, ProductoDTO.class);
-        return productoDTO;
+    public Producto findProductoById(Long id) {
+       return productoRepo.findProductoById(id).orElseThrow(() -> new IllegalArgumentException(error));
+
     }
 
     @Override

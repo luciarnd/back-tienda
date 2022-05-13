@@ -47,10 +47,8 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 	}
 
 	@Override
-	public DetallePedidoDTO findDetallePedidoById(Long id) {
-		 Optional<DetallePedido> detallePedido = detallePedidoRepo.findDetallePedidoById(id);
-	        DetallePedidoDTO detallePedidoDTO = mapper.map(detallePedido, DetallePedidoDTO.class);
-	        return detallePedidoDTO;
+	public DetallePedido findDetallePedidoById(Long id) {
+	        return detallePedidoRepo.findDetallePedidoById(id).orElseThrow(() -> new IllegalArgumentException(error));
 	}
 
 	@Override

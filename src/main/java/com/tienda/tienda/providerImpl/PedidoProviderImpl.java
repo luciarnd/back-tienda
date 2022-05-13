@@ -42,10 +42,8 @@ public class PedidoProviderImpl implements PedidoProvider {
     }
 
     @Override
-    public PedidoDTO findPedidoById(Long id) {
-        Optional<Pedido> pedido = pedidoRepo.findById(id);
-        PedidoDTO pedidoDTO = modelMapper.map(pedido, PedidoDTO.class);
-        return pedidoDTO;
+    public Pedido findPedidoById(Long id) {
+    return pedidoRepo.findPedidoById(id).orElseThrow(() -> new IllegalArgumentException(error));
     }
 
     @Override

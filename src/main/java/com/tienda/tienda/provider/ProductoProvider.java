@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -15,7 +16,7 @@ public interface ProductoProvider {
 
     List<ProductoDTO> findAllProductosDTO();
 
-    ProductoDTO findProductoById(Long id);
+    Producto findProductoById(Long id);
 
     void deleteProducto(Long id);
 

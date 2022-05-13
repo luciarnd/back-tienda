@@ -19,7 +19,7 @@ public interface DetallePedidoProvider {
 	
     List<DetallePedidoDTO> findAllDetallePedidoDTO();
 
-    DetallePedidoDTO findDetallePedidoById(Long id);
+    DetallePedido findDetallePedidoById(Long id);
 
     void deleteDetallePedido(Long id);
 

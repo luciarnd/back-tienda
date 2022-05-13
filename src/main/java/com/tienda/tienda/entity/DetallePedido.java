@@ -45,6 +45,8 @@ public class DetallePedido implements Serializable {
     @NotNull
     private Producto producto;
     
+    
+    
 	public Long getId() {
 		return id;
 	}
@@ -84,6 +86,7 @@ public class DetallePedido implements Serializable {
 	public void setPrecio_unidad(double precio_unidad) {
 		this.precio_unidad = precio_unidad;
 	}
+	
 
 }
 

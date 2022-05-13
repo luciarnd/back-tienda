@@ -1,7 +1,6 @@
 package com.tienda.tienda.provider;
 
 import com.tienda.tienda.entity.Pedido;
-import com.tienda.tienda.entity.Producto;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,9 +13,9 @@ public interface PedidoProvider {
 
     List<Pedido> findAllPedidos();
 
-    Pedido findPedidoById(Long id);
+    Pedido findPedidoById(int id);
 
-    void deletePedido(Long id);
+    void deletePedido(int id);
 
     Pedido updatePedido(Pedido pedido);
 }

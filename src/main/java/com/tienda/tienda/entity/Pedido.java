@@ -16,7 +16,7 @@ public class Pedido implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    private Long id;
+    private int id;
 
     @NotNull
     private String fecha;
@@ -27,11 +27,11 @@ public class Pedido implements Serializable {
     private Cliente cliente;
     
     
-    public Long getId() {
+    public int  getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int  id) {
 		this.id = id;
 	}
 

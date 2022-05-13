@@ -1,7 +1,6 @@
 package com.tienda.tienda.providerImpl;
 
 import com.tienda.tienda.entity.Pedido;
-import com.tienda.tienda.entity.Producto;
 import com.tienda.tienda.provider.PedidoProvider;
 import com.tienda.tienda.repository.PedidoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +29,12 @@ public class PedidoProviderImpl implements PedidoProvider {
     }
 
     @Override
-    public Pedido findPedidoById(Long id) {
+    public Pedido findPedidoById(int id) {
         return pedidoRepo.findPedidoById(id).orElseThrow(() -> new IllegalArgumentException(error));
     }
 
     @Override
-    public void deletePedido(Long id) {
+    public void deletePedido(int  id) {
         pedidoRepo.deletePedidoById(id);
     }
 

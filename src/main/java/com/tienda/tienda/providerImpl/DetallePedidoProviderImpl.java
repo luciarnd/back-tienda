@@ -1,13 +1,18 @@
 package com.tienda.tienda.providerImpl;
 
+import com.tienda.tienda.dtos.DetallePedidoDTO;
 import com.tienda.tienda.entity.DetallePedido;
 
 import com.tienda.tienda.provider.DetallePedidoProvider;
 import com.tienda.tienda.repository.DetallePedidoRepo;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,19 +21,28 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 
 	@Autowired
 	public DetallePedidoRepo detallePedidoRepo;
+	
 
+	 private ModelMapper mapper = new ModelMapper();
 
 	String error = "No se encontró el detalle de pedido.";
 
 	@Override
 	public DetallePedido addDetallePedido(DetallePedido detallePedido) {
-
+		
 		return detallePedidoRepo.save(detallePedido);
 	}
 
 	@Override
-	public List<DetallePedido> findAllDetallePedido() {
-		return detallePedidoRepo.findAll();
+	public List<DetallePedidoDTO> findAllDetallePedidoDTO() {
+		   List<DetallePedidoDTO> listDTO = new ArrayList<>();
+		    for(int i =0; i < detallePedidoRepo.findAll().size(); i++) {
+		        DetallePedido detallePedido = detallePedidoRepo.findAll().get(i);
+		        DetallePedidoDTO detallePedidoDTO = mapper.map(detallePedido, DetallePedidoDTO.class);
+		        listDTO.add(detallePedidoDTO);
+		    }
+	
+		return listDTO;
 	}
 
 	@Override
@@ -44,6 +58,17 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 	@Override
 	public DetallePedido updateDetallePedido(DetallePedido detallePedido) {
 		return detallePedidoRepo.save(detallePedido);
+	}
+	
+	public DetallePedidoDTO detallePedidoToDetallePedidoDTO(DetallePedido detallePedido) {
+		DetallePedidoDTO detallePedidoDTO = mapper.map(detallePedido, DetallePedidoDTO.class);
+		return detallePedidoDTO;
+	}
+	
+	public DetallePedido detallePedidoDTOtoDetallePedido(DetallePedidoDTO detallePedidoDTO) {
+		DetallePedido detallePedido = mapper.map(detallePedidoDTO, DetallePedido.class);
+		return detallePedido;
+		
 	}
 
 }

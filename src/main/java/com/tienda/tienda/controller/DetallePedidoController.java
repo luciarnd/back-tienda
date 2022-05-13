@@ -1,6 +1,8 @@
 package com.tienda.tienda.controller;
 
 
+
+import com.tienda.tienda.dtos.DetallePedidoDTO;
 import com.tienda.tienda.entity.DetallePedido;
 
 
@@ -24,8 +26,8 @@ public class DetallePedidoController {
     private DetallePedidoProvider detallePedidoProvider;
 
     @GetMapping("/all")
-    public ResponseEntity<List<DetallePedido>> getAllDetallePedidos(){
-        List<DetallePedido> detallePedido = detallePedidoProvider.findAllDetallePedido();
+    public ResponseEntity<List<DetallePedidoDTO>> getAllDetallePedidos(){
+        List<DetallePedidoDTO> detallePedido = detallePedidoProvider.findAllDetallePedidoDTO() ;
         return new ResponseEntity<>(detallePedido, HttpStatus.OK);
     }
 
@@ -37,7 +39,7 @@ public class DetallePedidoController {
 
     @PostMapping("/add")
     public ResponseEntity<DetallePedido> addDetallePedido(@RequestBody DetallePedido detallePedido){
-    	DetallePedido newDetallePedido= detallePedidoProvider.addDetallePedido(detallePedido);
+    	DetallePedido newDetallePedido = detallePedidoProvider.addDetallePedido(detallePedido);
         return new ResponseEntity<>(newDetallePedido, HttpStatus.CREATED);
     }
   

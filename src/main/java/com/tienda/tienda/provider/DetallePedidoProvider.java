@@ -1,5 +1,6 @@
 package com.tienda.tienda.provider;
 
+import com.tienda.tienda.dtos.DetallePedidoDTO;
 import com.tienda.tienda.entity.DetallePedido;
 
 
@@ -17,7 +18,7 @@ public interface DetallePedidoProvider {
 
     DetallePedido addDetallePedido(DetallePedido detallePedido);
 	
-    List<DetallePedido> findAllDetallePedido();
+    List<DetallePedidoDTO> findAllDetallePedidoDTO();
 
     DetallePedido findDetallePedidoById(Long id);
 
@@ -25,4 +26,7 @@ public interface DetallePedidoProvider {
 
     DetallePedido updateDetallePedido(DetallePedido detallePedido);
 
+    DetallePedidoDTO detallePedidoToDetallePedidoDTO(DetallePedido detallePedido);
+    
+    DetallePedido  detallePedidoDTOtoDetallePedido(DetallePedidoDTO detallePedidoDTO);
 }

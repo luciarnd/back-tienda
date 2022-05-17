@@ -58,7 +58,11 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 
 	@Override
 	public DetallePedido updateDetallePedido(DetallePedido detallePedido) {
-		return detallePedidoRepo.save(detallePedido);
+		if(detallePedidoRepo.findDetallePedidoById(detallePedido.getId()).isPresent()) {
+            return detallePedidoRepo.save(detallePedido);
+        } else {
+            throw new IllegalArgumentException(error);
+        }
 	}
 	
 //	public DetallePedidoDTO detallePedidoToDetallePedidoDTO(DetallePedido detallePedido) {

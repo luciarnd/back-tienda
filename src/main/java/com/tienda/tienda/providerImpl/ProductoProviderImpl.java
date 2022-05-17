@@ -41,6 +41,11 @@ public class ProductoProviderImpl implements ProductoProvider {
         }
         return productos;
     }
+    
+    @Override
+    public List<Producto> findAllProductos(){
+    	return productoRepo.findAll();
+    }
 
     @Override
     public Producto findProductoById(Long id) {

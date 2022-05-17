@@ -18,6 +18,8 @@ public interface ProductoProvider {
 
     Producto findProductoById(Long id);
 
+    List<Producto>findAllProductos();
+    
     void deleteProducto(Long id);
 
     Producto updateProducto(Producto producto);

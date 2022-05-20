@@ -12,5 +12,5 @@ import com.tienda.tienda.entity.Producto;
 @Service
 @Transactional
 public interface ExcelProvider {
-		ByteArrayInputStream createExcel(List<Producto> producto);
+		 ByteArrayInputStream createExcel(List<Producto> producto);
 }

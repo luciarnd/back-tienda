@@ -11,8 +11,9 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.tienda.tienda.entity.Producto;
+import com.tienda.tienda.provider.ExcelProvider;
 
-public class ExcelProviderImpl {
+public class ExcelProviderImpl{
 	public static ByteArrayInputStream createExcel(List<Producto> producto) {
 		try (XSSFWorkbook workbook = new XSSFWorkbook()) {
 

@@ -4,3 +4,14 @@ spring:
     username: alex
     password: Magic_nava02
     driverClassName: oracle.jdbc.OracleDriver
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: 'true'
+            required: 'true'
+          auth: 'true'
+    host: smtp.gmail.com
+    username: testossot@gmail.com
+    password: vztyucugdlyiudaf

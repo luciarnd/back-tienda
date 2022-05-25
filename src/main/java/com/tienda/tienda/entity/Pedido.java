@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Data
 @Entity
@@ -19,7 +20,7 @@ public class Pedido implements Serializable {
     private Long id;
 
     @NotNull
-    private String fecha;
+    private Date fecha;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
@@ -35,11 +36,11 @@ public class Pedido implements Serializable {
 		this.id = id;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
@@ -50,4 +51,5 @@ public class Pedido implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
 }

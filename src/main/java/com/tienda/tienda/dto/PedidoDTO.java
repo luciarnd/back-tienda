@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,35 +21,27 @@ public class PedidoDTO implements Serializable {
 		this.id = id;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
-	public String getClienteNombre() {
-		return clienteNombre;
+	public String getClienteNombreCompleto() {
+		return clienteNombreCompleto;
 	}
 
-	public void setClienteNombre(String clienteNombre) {
-		this.clienteNombre = clienteNombre;
-	}
-
-	public String getClienteApellido1() {
-		return clienteApellido1;
-	}
-
-	public void setClienteApellido1(String clienteApellido1) {
-		this.clienteApellido1 = clienteApellido1;
+	public void setClienteNombreCompleto(String clienteNombreCompleto) {
+		this.clienteNombreCompleto = clienteNombreCompleto;
 	}
 
 	private Long id;
 
-    private String fecha;
+    private Date fecha;
 
-    private String clienteNombre;
+    private String clienteNombreCompleto;
 
-    private String clienteApellido1;
+
 }

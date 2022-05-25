@@ -16,21 +16,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tienda.tienda.entity.Email;
 import com.tienda.tienda.provider.EmailProvider;
 
-
-
-
-
 @Component
 @RestController
 @RequestMapping("/email")
 public class EmailController {
 	
-	@Autowired
-	ObjectMapper objetMapper;
-	
-	@Autowired
-	private EmailProvider emailProvider;
-	
+	private final ObjectMapper objetMapper;
+	private final EmailProvider emailProvider;
+
+	public EmailController(ObjectMapper objetMapper, EmailProvider emailProvider) {
+		this.objetMapper = objetMapper;
+		this.emailProvider=emailProvider;
+	}
+
 	@PostMapping("/enviar")
 	public void sendEmail(@RequestParam(value = "email") String email,
 			@RequestParam(value = "file", required = false) MultipartFile file)

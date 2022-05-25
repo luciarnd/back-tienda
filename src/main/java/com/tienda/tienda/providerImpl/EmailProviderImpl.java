@@ -24,7 +24,6 @@ public class EmailProviderImpl implements EmailProvider {
 	
 	@Override
 	public void SendEmail(Email email, MultipartFile file) {
-		
 
 		try {
 		

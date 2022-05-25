@@ -12,7 +12,7 @@ import java.util.Optional;
 @Transactional
 public interface ProductoProvider {
 
-    Producto addProducto(Producto producto);
+    Producto addProducto(ProductoDTO productoDTO);
 
     List<ProductoDTO> findAllProductosDTO();
 
@@ -22,5 +22,5 @@ public interface ProductoProvider {
     
     void deleteProducto(Long id);
 
-    Producto updateProducto(Producto producto);
+    Producto updateProducto(ProductoDTO producto);
 }

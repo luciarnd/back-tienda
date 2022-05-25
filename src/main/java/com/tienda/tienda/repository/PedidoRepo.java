@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface PedidoRepo extends JpaRepository<Pedido, Long> {
     Optional<Pedido> findPedidoById(Long  id);
 
-    void deletePedidoById(int id);
+    void deletePedidoById(Long id);
 }

@@ -10,13 +10,13 @@ import java.util.List;
 @Service
 @Transactional
 public interface PedidoProvider {
-    Pedido addPedido(Pedido pedido);
+    Pedido addPedido(PedidoDTO pedidoDTO);
 
     List<PedidoDTO> findAllPedidosDTO();
 
     Pedido findPedidoById(Long id);
 
-    void deletePedido(int id);
+    void deletePedido(Long id);
 
-    Pedido updatePedido(Pedido pedido);
+    Pedido updatePedido(PedidoDTO pedidoDTO);
 }

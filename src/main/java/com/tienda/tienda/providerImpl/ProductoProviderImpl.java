@@ -1,10 +1,11 @@
 package com.tienda.tienda.providerImpl;
 
-import com.tienda.tienda.dto.PedidoDTO;
+
 import com.tienda.tienda.dto.ProductoDTO;
 import com.tienda.tienda.entity.Pedido;
 import com.tienda.tienda.entity.Producto;
 import com.tienda.tienda.provider.ProductoProvider;
+import com.tienda.tienda.repository.CategoriaRepo;
 import com.tienda.tienda.repository.ProductoRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,27 @@ public class ProductoProviderImpl implements ProductoProvider {
     @Autowired
     private ProductoRepo productoRepo;
 
+    @Autowired
+    private CategoriaRepo categoriaRepo;
+
     String error = "No se encontró el producto.";
 
     private ModelMapper modelMapper = new ModelMapper();
 
     @Override
-    public Producto addProducto(Producto producto) {
+    public Producto addProducto(ProductoDTO productoDTO) {
+        Producto producto = new Producto();
+        producto.setId(productoDTO.getId());
+        producto.setNombre(productoDTO.getNombre());
+        producto.setDescripcion(productoDTO.getDescripcion());
+        producto.setPrecio(productoDTO.getPrecio());
+        producto.setStock(productoDTO.getStock());
+        for (int i = 0; i< categoriaRepo.findAll().size(); i++){
+            if (categoriaRepo.findAll().get(i).getNombre().equals(productoDTO.getCategoriaNombre())){
+                producto.setCategoria(categoriaRepo.findAll().get(i));
+                break;
+            }
+        }
         return productoRepo.save(producto);
     }
 
@@ -41,11 +57,6 @@ public class ProductoProviderImpl implements ProductoProvider {
         }
         return productos;
     }
-    
-    @Override
-    public List<Producto> findAllProductos(){
-    	return productoRepo.findAll();
-    }
 
     @Override
     public Producto findProductoById(Long id) {
@@ -54,13 +65,30 @@ public class ProductoProviderImpl implements ProductoProvider {
     }
 
     @Override
+    public List<Producto> findAllProductos() {
+        return productoRepo.findAll();
+    }
+
+    @Override
     public void deleteProducto(Long id) {
         productoRepo.deleteProductoById(id);
     }
 
     @Override
-    public Producto updateProducto(Producto producto) {
-        if(productoRepo.findProductoById(producto.getId()).isPresent()) {
+    public Producto updateProducto(ProductoDTO productoDTO) {
+        if(productoRepo.findProductoById(productoDTO.getId()).isPresent()) {
+            Producto producto = new Producto();
+            producto.setId(productoDTO.getId());
+            producto.setNombre(productoDTO.getNombre());
+            producto.setDescripcion(productoDTO.getDescripcion());
+            producto.setPrecio(productoDTO.getPrecio());
+            producto.setStock(productoDTO.getStock());
+            for (int i = 0; i< categoriaRepo.findAll().size(); i++){
+                if (categoriaRepo.findAll().get(i).getNombre().equals(productoDTO.getCategoriaNombre())){
+                    producto.setCategoria(categoriaRepo.findAll().get(i));
+                    break;
+                }
+            }
             return productoRepo.save(producto);
         } else {
             throw new IllegalArgumentException(error);

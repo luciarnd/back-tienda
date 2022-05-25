@@ -32,18 +32,18 @@ public class PedidoController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Pedido> addPedido(@RequestBody Pedido pedido){
-    	Pedido newPedido= pedidoProvider.addPedido(pedido);
+    public ResponseEntity<Pedido> addPedido(@RequestBody PedidoDTO pedidoDTO){
+    	Pedido newPedido= pedidoProvider.addPedido(pedidoDTO);
         return new ResponseEntity<>(newPedido, HttpStatus.CREATED);
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Pedido> updatePedido(@RequestBody Pedido pedido){
-    	Pedido upPedido=pedidoProvider.updatePedido(pedido);
+    public ResponseEntity<Pedido> updatePedido(@RequestBody PedidoDTO pedidoDTO){
+    	Pedido upPedido=pedidoProvider.updatePedido(pedidoDTO);
         return new ResponseEntity<>(upPedido, HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Pedido> deletePedido(@PathVariable("id") int id){
+    public ResponseEntity<Pedido> deletePedido(@PathVariable("id") Long id){
         pedidoProvider.deletePedido(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

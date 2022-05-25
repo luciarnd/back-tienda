@@ -32,18 +32,7 @@ public class ProductoProviderImpl implements ProductoProvider {
 
     @Override
     public Producto addProducto(ProductoDTO productoDTO) {
-        Producto producto = new Producto();
-        producto.setId(productoDTO.getId());
-        producto.setNombre(productoDTO.getNombre());
-        producto.setDescripcion(productoDTO.getDescripcion());
-        producto.setPrecio(productoDTO.getPrecio());
-        producto.setStock(productoDTO.getStock());
-        for (int i = 0; i< categoriaRepo.findAll().size(); i++){
-            if (categoriaRepo.findAll().get(i).getNombre().equals(productoDTO.getCategoriaNombre())){
-                producto.setCategoria(categoriaRepo.findAll().get(i));
-                break;
-            }
-        }
+        Producto producto = modelMapper.map(productoDTO, Producto.class);
         return productoRepo.save(producto);
     }
 
@@ -76,19 +65,8 @@ public class ProductoProviderImpl implements ProductoProvider {
 
     @Override
     public Producto updateProducto(ProductoDTO productoDTO) {
-        if(productoRepo.findProductoById(productoDTO.getId()).isPresent()) {
-            Producto producto = new Producto();
-            producto.setId(productoDTO.getId());
-            producto.setNombre(productoDTO.getNombre());
-            producto.setDescripcion(productoDTO.getDescripcion());
-            producto.setPrecio(productoDTO.getPrecio());
-            producto.setStock(productoDTO.getStock());
-            for (int i = 0; i< categoriaRepo.findAll().size(); i++){
-                if (categoriaRepo.findAll().get(i).getNombre().equals(productoDTO.getCategoriaNombre())){
-                    producto.setCategoria(categoriaRepo.findAll().get(i));
-                    break;
-                }
-            }
+        if (productoRepo.findProductoById(productoDTO.getId()).isPresent()) {
+            Producto producto = modelMapper.map(productoDTO, Producto.class);
             return productoRepo.save(producto);
         } else {
             throw new IllegalArgumentException(error);

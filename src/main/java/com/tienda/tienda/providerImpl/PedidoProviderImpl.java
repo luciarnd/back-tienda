@@ -1,7 +1,10 @@
 package com.tienda.tienda.providerImpl;
 
 import com.tienda.tienda.dto.PedidoDTO;
+import com.tienda.tienda.dto.ProductoDTO;
+import com.tienda.tienda.entity.DetallePedido;
 import com.tienda.tienda.entity.Pedido;
+import com.tienda.tienda.entity.Producto;
 import com.tienda.tienda.provider.PedidoProvider;
 import com.tienda.tienda.repository.ClienteRepo;
 import com.tienda.tienda.repository.PedidoRepo;
@@ -22,8 +25,6 @@ public class PedidoProviderImpl implements PedidoProvider {
     @Autowired
     private PedidoRepo pedidoRepo;
 
-    @Autowired
-    private ClienteRepo clienteRepo;
 
     private ModelMapper modelMapper = new ModelMapper();
 
@@ -31,17 +32,7 @@ public class PedidoProviderImpl implements PedidoProvider {
 
     @Override
     public Pedido addPedido(PedidoDTO pedidoDTO) {
-        Pedido pedido = new Pedido();
-        pedido.setId(pedidoDTO.getId());
-        pedido.setFecha(pedidoDTO.getFecha());
-        for (int i = 0; i< clienteRepo.findAll().size(); i++){
-            String fullName= clienteRepo.findAll().get(i).getNombre() + " " + clienteRepo.findAll().get(i).getApellido1();
-            if (fullName.equals(pedidoDTO.getClienteNombreCompleto())){
-                pedido.setCliente(clienteRepo.findAll().get(i));
-                break;
-            }
-        }
-
+        Pedido pedido = modelMapper.map(pedidoDTO, Pedido.class);
         return pedidoRepo.save(pedido);
     }
 
@@ -50,10 +41,7 @@ public class PedidoProviderImpl implements PedidoProvider {
         List<PedidoDTO> pedidos = new ArrayList<>();
         for(int i =0; i < pedidoRepo.findAll().size(); i++) {
             Pedido pedido = pedidoRepo.findAll().get(i);
-            PedidoDTO pedidoDTO = new PedidoDTO();
-            pedidoDTO.setId(pedido.getId());
-            pedidoDTO.setFecha(pedido.getFecha());
-            pedidoDTO.setClienteNombreCompleto(pedido.getCliente().getNombre() + " " + pedido.getCliente().getApellido1());
+            PedidoDTO pedidoDTO = modelMapper.map(pedido, PedidoDTO.class);
             pedidos.add(pedidoDTO);
         }
         return pedidos;
@@ -72,16 +60,7 @@ public class PedidoProviderImpl implements PedidoProvider {
     @Override
     public Pedido updatePedido(PedidoDTO pedidoDTO) {
         if(pedidoRepo.findPedidoById(pedidoDTO.getId()).isPresent()) {
-            Pedido pedido = new Pedido();
-            pedido.setId(pedidoDTO.getId());
-            pedido.setFecha(pedidoDTO.getFecha());
-            for (int i = 0; i< clienteRepo.findAll().size(); i++){
-                String fullName= clienteRepo.findAll().get(i).getNombre() + " " + clienteRepo.findAll().get(i).getApellido1();
-                if (fullName.equals(pedidoDTO.getClienteNombreCompleto())){
-                    pedido.setCliente(clienteRepo.findAll().get(i));
-                    break;
-                }
-            }
+            Pedido pedido = modelMapper.map(pedidoDTO, Pedido.class);
             return pedidoRepo.save(pedido);
         } else {
             throw new IllegalArgumentException(error);

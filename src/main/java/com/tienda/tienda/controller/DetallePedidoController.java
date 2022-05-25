@@ -45,7 +45,7 @@ public class DetallePedidoController {
   
 
     @PutMapping("/update")
-    public ResponseEntity<DetallePedido> updateDetallePedido(@RequestBody DetallePedido detallePedido){
+    public ResponseEntity<DetallePedido> updateDetallePedido(@RequestBody DetallePedidoDTO detallePedido){
     	DetallePedido upDetallePedido= detallePedidoProvider.updateDetallePedido(detallePedido);
         return new ResponseEntity<>(upDetallePedido, HttpStatus.OK);
     }

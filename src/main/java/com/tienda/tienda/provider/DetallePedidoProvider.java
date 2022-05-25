@@ -21,7 +21,7 @@ public interface DetallePedidoProvider {
 
     void deleteDetallePedido(Long id);
 
-    DetallePedido updateDetallePedido(DetallePedido detallePedido);
+    DetallePedido updateDetallePedido(DetallePedidoDTO detallePedido);
 
 	DetallePedido addDetallePedido(DetallePedidoDTO detallePedido);
 

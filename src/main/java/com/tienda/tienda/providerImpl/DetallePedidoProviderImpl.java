@@ -31,8 +31,7 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 
 	@Override
 	public DetallePedido addDetallePedido(DetallePedidoDTO detallePedidoDto) {
-		DetallePedido  detallePedido = new DetallePedido();
-		detallePedido= mapper.map(detallePedidoDto, DetallePedido.class);
+		DetallePedido  detallePedido = mapper.map(detallePedidoDto, DetallePedido.class);
 		return detallePedidoRepo.save(detallePedido);
 	}
 
@@ -59,9 +58,10 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 	}
 
 	@Override
-	public DetallePedido updateDetallePedido(DetallePedido detallePedido) {
-		if(detallePedidoRepo.findDetallePedidoById(detallePedido.getId()).isPresent()) {
-            return detallePedidoRepo.save(detallePedido);
+	public DetallePedido updateDetallePedido(DetallePedidoDTO detallePedidoDTO) {
+		if(detallePedidoRepo.findDetallePedidoById(detallePedidoDTO.getId()).isPresent()) {
+			DetallePedido detallePedido = mapper.map(detallePedidoDTO, DetallePedido.class);
+			return detallePedidoRepo.save(detallePedido);
         } else {
             throw new IllegalArgumentException(error);
         }

@@ -29,19 +29,40 @@ public class PedidoDTO implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public String getClienteNombreCompleto() {
-		return clienteNombreCompleto;
-	}
-
-	public void setClienteNombreCompleto(String clienteNombreCompleto) {
-		this.clienteNombreCompleto = clienteNombreCompleto;
-	}
 
 	private Long id;
 
     private Date fecha;
 
-    private String clienteNombreCompleto;
+	public Long getClienteId() {
+		return clienteId;
+	}
+
+	public void setClienteId(Long clienteId) {
+		this.clienteId = clienteId;
+	}
+
+	private Long clienteId;
+
+	public String getClienteNombre() {
+		return clienteNombre;
+	}
+
+	public void setClienteNombre(String clienteNombre) {
+		this.clienteNombre = clienteNombre;
+	}
+
+	private String clienteNombre;
+
+	public String getClienteApellido1() {
+		return clienteApellido1;
+	}
+
+	public void setClienteApellido1(String clienteApellido1) {
+		this.clienteApellido1 = clienteApellido1;
+	}
+
+	private String clienteApellido1;
 
 
 }

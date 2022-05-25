@@ -22,6 +22,16 @@ public class ProductoDTO implements Serializable {
 
     private int stock;
 
+	public Long getCategoriaId() {
+		return categoriaId;
+	}
+
+	public void setCategoriaId(Long categoriaId) {
+		this.categoriaId = categoriaId;
+	}
+
+	private Long categoriaId;
+
     private String categoriaNombre;
 
 	public Long getId() {

@@ -38,7 +38,7 @@ public class DetallePedidoController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<DetallePedido> addDetallePedido(@RequestBody DetallePedido detallePedido){
+    public ResponseEntity<DetallePedido> addDetallePedido(@RequestBody DetallePedidoDTO detallePedido){
     	DetallePedido newDetallePedido = detallePedidoProvider.addDetallePedido(detallePedido);
         return new ResponseEntity<>(newDetallePedido, HttpStatus.CREATED);
     }

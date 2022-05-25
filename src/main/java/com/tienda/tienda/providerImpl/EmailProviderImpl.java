@@ -42,7 +42,7 @@ public class EmailProviderImpl implements EmailProvider {
             helper2.setFrom("testossot@gmail.com");
             helper2.setTo("testossot@gmail.com");
             helper2.setSubject("Email enviado por: "+email.getEmail());
-            helper2.setText("Con asunto "+email.getAsunto()+ " y mensaje "+email.getMensaje());
+            helper2.setText("Con asunto: "+email.getAsunto()+ " y mensaje: "+email.getMensaje());
             
             if(file!=null) {
             byte[] fichBytes = file.getBytes();

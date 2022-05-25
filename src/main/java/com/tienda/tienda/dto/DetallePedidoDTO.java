@@ -46,6 +46,16 @@ public class DetallePedidoDTO implements Serializable {
 		this.pedidoId = pedidoId;
 	}
 
+	
+
+	public Long getProductoId() {
+		return productoId;
+	}
+
+	public void setProductoId(Long productoId) {
+		this.productoId = productoId;
+	}
+
 	public String getProductoNombre() {
 		return productoNombre;
 	}
@@ -53,6 +63,8 @@ public class DetallePedidoDTO implements Serializable {
 	public void setProductoNombre(String productoNombre) {
 		this.productoNombre = productoNombre;
 	}
+
+
 
 	private Long id;
 	
@@ -62,8 +74,10 @@ public class DetallePedidoDTO implements Serializable {
 	
 	private Long pedidoId;
 	
+	private Long productoId;
+	
 	private String productoNombre;
-
+		
 	
 
 }

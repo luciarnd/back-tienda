@@ -1,9 +1,9 @@
 package com.tienda.tienda.providerImpl;
 
 import com.tienda.tienda.dto.DetallePedidoDTO;
-import com.tienda.tienda.dto.PedidoDTO;
+
 import com.tienda.tienda.entity.DetallePedido;
-import com.tienda.tienda.entity.Pedido;
+
 import com.tienda.tienda.provider.DetallePedidoProvider;
 import com.tienda.tienda.repository.DetallePedidoRepo;
 
@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 @Transactional
@@ -30,7 +30,9 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 	String error = "No se encontró el detalle de pedido.";
 
 	@Override
-	public DetallePedido addDetallePedido(DetallePedido detallePedido) {
+	public DetallePedido addDetallePedido(DetallePedidoDTO detallePedidoDto) {
+		DetallePedido  detallePedido = new DetallePedido();
+		detallePedido= mapper.map(detallePedidoDto, DetallePedido.class);
 		return detallePedidoRepo.save(detallePedido);
 	}
 

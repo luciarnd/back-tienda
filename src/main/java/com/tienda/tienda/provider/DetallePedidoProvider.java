@@ -14,8 +14,6 @@ import java.util.List;
 @Transactional
 public interface DetallePedidoProvider {
 
-
-    DetallePedido addDetallePedido(DetallePedido detallePedido);
 	
     List<DetallePedidoDTO> findAllDetallePedidoDTO();
 
@@ -24,6 +22,9 @@ public interface DetallePedidoProvider {
     void deleteDetallePedido(Long id);
 
     DetallePedido updateDetallePedido(DetallePedido detallePedido);
+
+	DetallePedido addDetallePedido(DetallePedidoDTO detallePedido);
+
 
 //    DetallePedidoDTO detallePedidoToDetallePedidoDTO(DetallePedido detallePedido);
 //    

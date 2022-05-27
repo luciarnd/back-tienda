@@ -60,7 +60,7 @@ public class EmailProviderImpl implements EmailProvider {
             e.printStackTrace();
         }
 		}
-	 @Scheduled( cron = "0 0/1 * * * ?")
+	 @Scheduled( cron = "0 0 0 1/7 * *")
 	public void sendEmailAuto() {
 		try {
 			MimeMessage mimeMessage=javaMailSender.createMimeMessage();

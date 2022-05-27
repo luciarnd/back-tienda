@@ -60,14 +60,14 @@ public class EmailProviderImpl implements EmailProvider {
             e.printStackTrace();
         }
 		}
-	 @Scheduled( cron = "0 0/1 * * * ?")
+	 @Scheduled( cron = "0 0 0 1/7 * * ")
 	public void sendEmailAuto() {
 		try {
 			MimeMessage mimeMessage=javaMailSender.createMimeMessage();
 			MimeMessageHelper mimeMessageHelper= new MimeMessageHelper(mimeMessage,true);
 		
 			mimeMessageHelper.setFrom("testossot@gmail.com");
-			mimeMessageHelper.setTo("daw02.2022@gmail.com");
+			mimeMessageHelper.setTo("testossot@gmail.com");
 			mimeMessageHelper.setSubject("Correo Automatico");
 			mimeMessageHelper.setText("");
 			ByteArrayInputStream stream = ExcelProviderImpl.createExcel(productoProvider.findAllProductos());

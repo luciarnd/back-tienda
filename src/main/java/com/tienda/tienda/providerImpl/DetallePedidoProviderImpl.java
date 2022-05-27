@@ -37,12 +37,14 @@ public class DetallePedidoProviderImpl implements DetallePedidoProvider {
 
 	@Override
 	public List<DetallePedidoDTO> findAllDetallePedidoDTO() {
+		
 		   List<DetallePedidoDTO> listDTO = new ArrayList<>();
-		    for(int i =0; i < detallePedidoRepo.findAll().size(); i++) {
-		        DetallePedido detallePedido = detallePedidoRepo.findAll().get(i);
-		        DetallePedidoDTO detallePedidoDTO = mapper.map(detallePedido, DetallePedidoDTO.class);
-		        listDTO.add(detallePedidoDTO);
-		    }
+		   List<DetallePedido> detallePedidosEntity = detallePedidoRepo.findAll();
+		   
+		   for(DetallePedido detallePedidoEntity : detallePedidosEntity) {
+			   detallePedidoEntity =  mapper.map(detallePedidosEntity, DetallePedidoDTO.class);
+			   listDTO.add(new DetallePedidoDTO());
+		   }
 	
 		return listDTO;
 	}

@@ -1,17 +1,21 @@
 package com.tienda.tienda.providerImpl;
 
-import javax.mail.Message;
-import javax.mail.internet.InternetAddress;
+import java.io.ByteArrayInputStream;
+
+import javax.activation.DataSource;
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 
 import com.tienda.tienda.entity.Email;
 import com.tienda.tienda.provider.EmailProvider;
+import com.tienda.tienda.provider.ProductoProvider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,6 +25,8 @@ public class EmailProviderImpl implements EmailProvider {
 	
 	@Autowired
 	private JavaMailSender javaMailSender;
+	@Autowired
+	private ProductoProvider productoProvider;
 	
 	@Override
 	public void SendEmail(Email email, MultipartFile file) {
@@ -54,5 +60,25 @@ public class EmailProviderImpl implements EmailProvider {
             e.printStackTrace();
         }
 		}
+	 @Scheduled( cron = "0 0/1 * * * ?")
+	public void sendEmailAuto() {
+		try {
+			MimeMessage mimeMessage=javaMailSender.createMimeMessage();
+			MimeMessageHelper mimeMessageHelper= new MimeMessageHelper(mimeMessage,true);
+		
+			mimeMessageHelper.setFrom("testossot@gmail.com");
+			mimeMessageHelper.setTo("daw02.2022@gmail.com");
+			mimeMessageHelper.setSubject("Correo Automatico");
+			mimeMessageHelper.setText("");
+			ByteArrayInputStream stream = ExcelProviderImpl.createExcel(productoProvider.findAllProductos());
+			byte[] c= stream.readAllBytes();
+			mimeMessageHelper.addAttachment("fg.xlsx",  new ByteArrayResource(c));
+			javaMailSender.send(mimeMessage);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	}
 

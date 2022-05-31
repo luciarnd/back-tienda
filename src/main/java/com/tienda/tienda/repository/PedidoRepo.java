@@ -14,7 +14,7 @@ public interface PedidoRepo extends JpaRepository<PedidoEntity, Long> {
 
     void deletePedidoByIdAndProductoId(Long id, Long productoId);
 
-    /*@Query("SELECT DISTINCT id FROM PedidoEntity")*/
-    /*List<PedidoEntity> getPedidos();*/
+//    @Query("SELECT DISTINCT id FROM PedidoEntity")
+//    List<PedidoEntity> getPedidos();
 }
 

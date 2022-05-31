@@ -2,12 +2,15 @@ package com.tienda.tienda.providerImpl;
 
 import java.io.ByteArrayInputStream;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4ecb52158fb7008c4fd5a45e88cfc7d753ff2f54
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 
-import com.tienda.tienda.entity.Email;
+import com.tienda.tienda.entity.EmailEntity;
 import com.tienda.tienda.provider.EmailProvider;
 import com.tienda.tienda.provider.ProductoProvider;
 
@@ -29,7 +32,7 @@ public class EmailProviderImpl implements EmailProvider {
 	private ProductoProvider productoProvider;
 	
 	@Override
-	public void SendEmail(Email email, MultipartFile file) {
+	public void SendEmail(EmailEntity email, MultipartFile file) {
 
 		try {
 		

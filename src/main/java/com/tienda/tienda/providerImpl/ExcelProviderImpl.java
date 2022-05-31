@@ -10,10 +10,10 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.tienda.tienda.entity.Producto;
+import com.tienda.tienda.entity.ProductoEntity;
 
 public class ExcelProviderImpl{
-	public static ByteArrayInputStream createExcel(List<Producto> producto) {
+	public static ByteArrayInputStream createExcel(List<ProductoEntity> producto) {
 		try (XSSFWorkbook workbook = new XSSFWorkbook()) {
 
 			Sheet sheetProductos = workbook.createSheet("Productos");

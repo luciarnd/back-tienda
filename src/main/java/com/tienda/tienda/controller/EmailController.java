@@ -2,7 +2,10 @@ package com.tienda.tienda.controller;
 
 import javax.mail.MessagingException;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4ecb52158fb7008c4fd5a45e88cfc7d753ff2f54
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tienda.tienda.entity.Email;
+import com.tienda.tienda.entity.EmailEntity;
 import com.tienda.tienda.provider.EmailProvider;
 
 @Component
@@ -33,9 +36,9 @@ public class EmailController {
 	public void sendEmail(@RequestParam(value = "email") String email,
 			@RequestParam(value = "file", required = false) MultipartFile file)
 			throws MessagingException, UnsupportedClassVersionError {
-		Email correo = null;
+		EmailEntity correo = null;
 		try {
-			correo = objetMapper.readValue(email, Email.class); 
+			correo = objetMapper.readValue(email, EmailEntity.class);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

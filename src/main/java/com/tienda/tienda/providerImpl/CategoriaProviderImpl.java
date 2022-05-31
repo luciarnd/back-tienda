@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tienda.tienda.entity.Categoria;
+import com.tienda.tienda.entity.CategoriaEntity;
 import com.tienda.tienda.provider.CategoriaProvider;
 import com.tienda.tienda.repository.CategoriaRepo;
 
@@ -20,18 +20,18 @@ public class CategoriaProviderImpl implements CategoriaProvider{
 	String error = "No se encontro la categoria";
 	
 	@Override
-	public Categoria addCategoria(Categoria categoria) {
+	public CategoriaEntity addCategoria(CategoriaEntity categoria) {
 		return categoriaRepo.save(categoria);
 	}
 
 	@Override
-	public List<Categoria> findAllCategoria() {
+	public List<CategoriaEntity> findAllCategoria() {
 		
 		return categoriaRepo.findAll();
 	}
 
 	@Override
-	public Categoria findCategoriaById(Long id) {
+	public CategoriaEntity findCategoriaById(Long id) {
 		return categoriaRepo.findCategoriaById(id).orElseThrow(() -> new IllegalArgumentException(error));
 	}
 
@@ -42,7 +42,7 @@ public class CategoriaProviderImpl implements CategoriaProvider{
 	}
 
 	@Override
-	public Categoria updateCategoria(Categoria categoria) {
+	public CategoriaEntity updateCategoria(CategoriaEntity categoria) {
 		if(categoriaRepo.findCategoriaById(categoria.getId()).isPresent()) {
             return categoriaRepo.save(categoria);
         } else {

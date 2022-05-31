@@ -1,7 +1,7 @@
 package com.tienda.tienda.providerImpl;
 
 import com.tienda.tienda.dto.PedidoDTO;
-import com.tienda.tienda.entity.Pedido;
+import com.tienda.tienda.entity.PedidoEntity;
 import com.tienda.tienda.provider.PedidoProvider;
 import com.tienda.tienda.repository.PedidoRepo;
 import org.modelmapper.ModelMapper;
@@ -26,16 +26,16 @@ public class PedidoProviderImpl implements PedidoProvider {
     String error = "No se encontró el pedido.";
 
     @Override
-    public Pedido addPedido(PedidoDTO pedidoDTO) {
-        Pedido pedido = modelMapper.map(pedidoDTO, Pedido.class);
+    public PedidoEntity addPedido(PedidoDTO pedidoDTO) {
+        PedidoEntity pedido = modelMapper.map(pedidoDTO, PedidoEntity.class);
         return pedidoRepo.save(pedido);
     }
 
     @Override
-    public List<PedidoDTO> findAllPedidosDTO() {
-        List<PedidoDTO> pedidos = new ArrayList<>();
-        for(int i =0; i < pedidoRepo.findAll().size(); i++) {
-            Pedido pedido = pedidoRepo.findAll().get(i);
+    public List<PedidoDTO> findDistinct() {
+        List<PedidoDTO> pedidos = new ArrayList<PedidoDTO>();
+        List<PedidoEntity> pedidoEntity = pedidoRepo.findAll();
+        for(PedidoEntity pedido : pedidoEntity) {
             PedidoDTO pedidoDTO = modelMapper.map(pedido, PedidoDTO.class);
             pedidos.add(pedidoDTO);
         }
@@ -43,7 +43,7 @@ public class PedidoProviderImpl implements PedidoProvider {
     }
 
     @Override
-    public Pedido findPedidoById(Long id) {
+    public PedidoEntity findPedidoById(Long id) {
     return pedidoRepo.findPedidoById(id).orElseThrow(() -> new IllegalArgumentException(error));
     }
 
@@ -53,12 +53,17 @@ public class PedidoProviderImpl implements PedidoProvider {
     }
 
     @Override
-    public Pedido updatePedido(PedidoDTO pedidoDTO) {
+    public PedidoEntity updatePedido(PedidoDTO pedidoDTO) {
         if(pedidoRepo.findPedidoById(pedidoDTO.getId()).isPresent()) {
-            Pedido pedido = modelMapper.map(pedidoDTO, Pedido.class);
+            PedidoEntity pedido = modelMapper.map(pedidoDTO, PedidoEntity.class);
             return pedidoRepo.save(pedido);
         } else {
             throw new IllegalArgumentException(error);
         }
+    }
+
+    @Override
+    public void deletePedidoByProducto(Long id, Long productoId) {
+        pedidoRepo.deletePedidoByIdAndProductoId(id, productoId);
     }
 }

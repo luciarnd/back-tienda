@@ -11,7 +11,8 @@ import java.io.Serializable;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Producto implements Serializable {
+@Table(name="Producto")
+public class ProductoEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
@@ -31,7 +32,7 @@ public class Producto implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     @NotNull
-    private Categoria categoria;
+    private CategoriaEntity categoria;
 
 	public Long getId() {
 		return id;
@@ -73,11 +74,11 @@ public class Producto implements Serializable {
 		this.stock = stock;
 	}
 
-	public Categoria getCategoria() {
+	public CategoriaEntity getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(Categoria categoria) {
+	public void setCategoria(CategoriaEntity categoria) {
 		this.categoria = categoria;
 	}
     

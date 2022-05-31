@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tienda.tienda.entity.Cliente;
+import com.tienda.tienda.entity.ClienteEntity;
 import com.tienda.tienda.provider.ClienteProvider;
 import com.tienda.tienda.repository.ClienteRepo;
 
@@ -20,18 +20,18 @@ public class ClienteProviderImpl implements ClienteProvider{
 	String error = "No se encontro el cliente.";
 	
 	@Override
-	public Cliente addClinete(Cliente cliente) {
+	public ClienteEntity addClinete(ClienteEntity cliente) {
 		
 		return clienteRepo.save(cliente);
 	}
 
 	@Override
-	public List<Cliente> findAllCliente() {
+	public List<ClienteEntity> findAllCliente() {
 		return clienteRepo.findAll();
 	}
 
 	@Override
-	public Cliente findClienteById(Long id) {
+	public ClienteEntity findClienteById(Long id) {
 		return clienteRepo.findClienteById(id).orElseThrow(() -> new IllegalArgumentException(error));
 	}
 	@Override
@@ -41,7 +41,7 @@ public class ClienteProviderImpl implements ClienteProvider{
 	}
 
 	@Override
-	public Cliente updateCliente(Cliente cliente) {
+	public ClienteEntity updateCliente(ClienteEntity cliente) {
 		if(clienteRepo.findClienteById(cliente.getId()).isPresent()) {
             return clienteRepo.save(cliente);
         } else {

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tienda.tienda.entity.Cliente;
+import com.tienda.tienda.entity.ClienteEntity;
 import com.tienda.tienda.provider.ClienteProvider;
 
 @Component
@@ -27,31 +27,31 @@ public class ClienteController {
 	private ClienteProvider clienteProvider;
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Cliente>> getAllClientes(){
-		List<Cliente> clientes = clienteProvider.findAllCliente();
+	public ResponseEntity<List<ClienteEntity>> getAllClientes(){
+		List<ClienteEntity> clientes = clienteProvider.findAllCliente();
 		return new ResponseEntity<>(clientes,HttpStatus.OK);
 	}
 	
 	@GetMapping("/getById/{id}")
-	public ResponseEntity<Cliente> findCategoria(@PathVariable("id") Long id){
-		Cliente cliente=clienteProvider.findClienteById(id);
+	public ResponseEntity<ClienteEntity> findCategoria(@PathVariable("id") Long id){
+		ClienteEntity cliente=clienteProvider.findClienteById(id);
 		return new ResponseEntity<>(cliente, HttpStatus.OK);
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<Cliente> addCliente(@RequestBody Cliente cliente){
-		Cliente newCliente = clienteProvider.addClinete(cliente);
+	public ResponseEntity<ClienteEntity> addCliente(@RequestBody ClienteEntity cliente){
+		ClienteEntity newCliente = clienteProvider.addClinete(cliente);
 		return new ResponseEntity<>(newCliente,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<Cliente> updateCliente(@RequestBody Cliente cliente){
-		Cliente upcliente= clienteProvider.updateCliente(cliente);
+	public ResponseEntity<ClienteEntity> updateCliente(@RequestBody ClienteEntity cliente){
+		ClienteEntity upcliente= clienteProvider.updateCliente(cliente);
 		return new ResponseEntity<>(upcliente, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Cliente> deleteCliente(@PathVariable("id") Long id) {
+	public ResponseEntity<ClienteEntity> deleteCliente(@PathVariable("id") Long id) {
 		clienteProvider.deleteClienteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

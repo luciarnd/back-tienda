@@ -2,6 +2,7 @@ package com.tienda.tienda.dto;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
@@ -10,8 +11,7 @@ import java.sql.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class PedidoDTO implements Serializable {
 
 	private Long id;

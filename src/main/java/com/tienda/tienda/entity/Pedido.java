@@ -1,16 +1,21 @@
 package com.tienda.tienda.entity;
 
-import lombok.*;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.sql.Date;
 
 @Data
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @IdClass(PedidoId.class)
 public class Pedido implements Serializable {
 
@@ -22,7 +27,7 @@ public class Pedido implements Serializable {
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_producto")
-	private Producto producto;
+	private ProductoEntity producto;
 
     @NotNull
     private Date fecha;
@@ -33,7 +38,7 @@ public class Pedido implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     @NotNull
-    private Cliente cliente;
+    private ClienteEntity cliente;
 
 	
 }

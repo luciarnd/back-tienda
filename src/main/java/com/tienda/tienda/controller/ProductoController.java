@@ -10,10 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-<<<<<<< HEAD
 
-=======
->>>>>>> 4ecb52158fb7008c4fd5a45e88cfc7d753ff2f54
 
 @Component
 @RestController

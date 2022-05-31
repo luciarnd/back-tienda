@@ -2,10 +2,7 @@ package com.tienda.tienda.controller;
 
 import javax.mail.MessagingException;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 4ecb52158fb7008c4fd5a45e88cfc7d753ff2f54
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

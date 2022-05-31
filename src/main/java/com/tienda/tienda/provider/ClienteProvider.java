@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.tienda.tienda.entity.Cliente;
+import com.tienda.tienda.entity.ClienteEntity;
 
 
 
@@ -14,13 +14,13 @@ import com.tienda.tienda.entity.Cliente;
 @Transactional
 public interface ClienteProvider {
 
-    Cliente addClinete(Cliente cliente);
+    ClienteEntity addClinete(ClienteEntity cliente);
 
-    List<Cliente> findAllCliente();
+    List<ClienteEntity> findAllCliente();
 
-    Cliente findClienteById(Long id);
+    ClienteEntity findClienteById(Long id);
 
-    Cliente updateCliente(Cliente cliente);
+    ClienteEntity updateCliente(ClienteEntity cliente);
 
 	void deleteClienteById(Long id);
 }

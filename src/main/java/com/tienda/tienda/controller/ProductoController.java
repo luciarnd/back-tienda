@@ -1,7 +1,7 @@
 package com.tienda.tienda.controller;
 
 import com.tienda.tienda.dto.ProductoDTO;
-import com.tienda.tienda.entity.Producto;
+import com.tienda.tienda.entity.ProductoEntity;
 import com.tienda.tienda.provider.ProductoProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 @RestController
@@ -27,24 +26,24 @@ public class ProductoController {
     }
 
     @GetMapping("getById/{id}")
-    public ResponseEntity<Producto> getProductoById(@PathVariable("id") Long id){
-        Producto producto = productoProvider.findProductoById(id);
+    public ResponseEntity<ProductoEntity> getProductoById(@PathVariable("id") Long id){
+        ProductoEntity producto = productoProvider.findProductoById(id);
         return new ResponseEntity<>(producto, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Producto> addProducto(@RequestBody ProductoDTO productoDTO){
-    	Producto newProducto=productoProvider.addProducto(productoDTO);
+    public ResponseEntity<ProductoEntity> addProducto(@RequestBody ProductoDTO productoDTO){
+    	ProductoEntity newProducto=productoProvider.addProducto(productoDTO);
         return new ResponseEntity<>(newProducto, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Producto> updateProducto(@RequestBody ProductoDTO productoDTO){
-    	Producto upProducto = productoProvider.updateProducto(productoDTO);
+    public ResponseEntity<ProductoEntity> updateProducto(@RequestBody ProductoDTO productoDTO){
+    	ProductoEntity upProducto = productoProvider.updateProducto(productoDTO);
         return new ResponseEntity<>(upProducto, HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Producto> deleteProdcuto(@PathVariable("id") Long id){
+    public ResponseEntity<ProductoEntity> deleteProdcuto(@PathVariable("id") Long id){
         productoProvider.deleteProducto(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

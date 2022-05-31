@@ -1,6 +1,5 @@
 package com.tienda.tienda.dto;
 
-import com.tienda.tienda.entity.Categoria;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +9,8 @@ import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class ProductoDTO implements Serializable {
 
     private Long id;
@@ -22,65 +23,9 @@ public class ProductoDTO implements Serializable {
 
     private int stock;
 
-	public Long getCategoriaId() {
-		return categoriaId;
-	}
-
-	public void setCategoriaId(Long categoriaId) {
-		this.categoriaId = categoriaId;
-	}
-
 	private Long categoriaId;
 
     private String categoriaNombre;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
-	public int getStock() {
-		return stock;
-	}
-
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
-
-	public String getCategoriaNombre() {
-		return categoriaNombre;
-	}
-
-	public void setCategoriaNombre(String categoriaNombre) {
-		this.categoriaNombre = categoriaNombre;
-	}
     
     
 }

@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.tienda.tienda.entity.Categoria;
+import com.tienda.tienda.entity.CategoriaEntity;
 
 
 
@@ -15,13 +15,13 @@ import com.tienda.tienda.entity.Categoria;
 @Transactional
 public interface CategoriaProvider {
 
-    Categoria addCategoria(Categoria categoria);
+    CategoriaEntity addCategoria(CategoriaEntity categoria);
 
-    List<Categoria> findAllCategoria();
+    List<CategoriaEntity> findAllCategoria();
 
-    Categoria findCategoriaById(Long id);
+    CategoriaEntity findCategoriaById(Long id);
 
-    Categoria updateCategoria(Categoria categoria);
+    CategoriaEntity updateCategoria(CategoriaEntity categoria);
 
 	void deleteCategoriaById(Long id);
 

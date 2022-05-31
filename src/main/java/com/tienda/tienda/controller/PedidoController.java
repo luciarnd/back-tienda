@@ -1,7 +1,7 @@
 package com.tienda.tienda.controller;
 
 import com.tienda.tienda.dto.PedidoDTO;
-import com.tienda.tienda.entity.Pedido;
+import com.tienda.tienda.entity.PedidoEntity;
 import com.tienda.tienda.provider.PedidoProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,30 +21,36 @@ public class PedidoController {
 
     @GetMapping("/all")
     public ResponseEntity<List<PedidoDTO>> getAllPedidos(){
-        List<PedidoDTO> pedidos = pedidoProvider.findAllPedidosDTO();
+        List<PedidoDTO> pedidos = pedidoProvider.findDistinct();
         return new ResponseEntity<>(pedidos, HttpStatus.OK);
     }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<Pedido> getPedidoById(@PathVariable("id") Long id){
-        Pedido pedido = pedidoProvider.findPedidoById(id);
+    public ResponseEntity<PedidoEntity> getPedidoById(@PathVariable("id") Long id){
+        PedidoEntity pedido = pedidoProvider.findPedidoById(id);
         return new ResponseEntity<>(pedido, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Pedido> addPedido(@RequestBody PedidoDTO pedidoDTO){
-    	Pedido newPedido= pedidoProvider.addPedido(pedidoDTO);
+    public ResponseEntity<PedidoEntity> addPedido(@RequestBody PedidoDTO pedidoDTO){
+    	PedidoEntity newPedido= pedidoProvider.addPedido(pedidoDTO);
         return new ResponseEntity<>(newPedido, HttpStatus.CREATED);
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Pedido> updatePedido(@RequestBody PedidoDTO pedidoDTO){
-    	Pedido upPedido=pedidoProvider.updatePedido(pedidoDTO);
+    public ResponseEntity<PedidoEntity> updatePedido(@RequestBody PedidoDTO pedidoDTO){
+    	PedidoEntity upPedido=pedidoProvider.updatePedido(pedidoDTO);
         return new ResponseEntity<>(upPedido, HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Pedido> deletePedido(@PathVariable("id") Long id){
+    public ResponseEntity<PedidoEntity> deletePedido(@PathVariable("id") Long id){
         pedidoProvider.deletePedido(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deletePedidoByProducto/{id}/{productoId}")
+    public ResponseEntity<PedidoEntity> deletePedidoByProducto(@PathVariable("id") Long id, @PathVariable("productoId") Long productoId) {
+        pedidoProvider.deletePedidoByProducto(id, productoId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

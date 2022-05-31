@@ -1,26 +1,25 @@
 package com.tienda.tienda.provider;
 
 import com.tienda.tienda.dto.ProductoDTO;
-import com.tienda.tienda.entity.Producto;
+import com.tienda.tienda.entity.ProductoEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
 public interface ProductoProvider {
 
-    Producto addProducto(ProductoDTO productoDTO);
+    ProductoEntity addProducto(ProductoDTO productoDTO);
 
     List<ProductoDTO> findAllProductosDTO();
 
-    Producto findProductoById(Long id);
+    ProductoEntity findProductoById(Long id);
 
-    List<Producto>findAllProductos();
+    List<ProductoEntity>findAllProductos();
     
     void deleteProducto(Long id);
 
-    Producto updateProducto(ProductoDTO producto);
+    ProductoEntity updateProducto(ProductoDTO producto);
 }

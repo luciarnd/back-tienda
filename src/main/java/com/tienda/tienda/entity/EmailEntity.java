@@ -5,14 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
+import javax.persistence.Table;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class PedidoId implements Serializable {
-    private Long id;
+public class EmailEntity {
+	private String email;
+	
+	private String asunto;
+	
+	private String Mensaje;
 
-    private Long producto;
 }

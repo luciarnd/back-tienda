@@ -7,10 +7,10 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.tienda.tienda.entity.Producto;
+import com.tienda.tienda.entity.ProductoEntity;
 
 @Service
 @Transactional
 public interface ExcelProvider {
-		 ByteArrayInputStream createExcel(List<Producto> producto);
+		 ByteArrayInputStream createExcel(List<ProductoEntity> producto);
 }

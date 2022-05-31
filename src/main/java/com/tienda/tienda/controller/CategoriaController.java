@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tienda.tienda.entity.Categoria;
+import com.tienda.tienda.entity.CategoriaEntity;
 import com.tienda.tienda.provider.CategoriaProvider;
 
 
@@ -29,31 +29,31 @@ public class CategoriaController {
 	private CategoriaProvider categoriaProvider;
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Categoria>> getAllCategories(){
-		List<Categoria> categorias = categoriaProvider.findAllCategoria();
+	public ResponseEntity<List<CategoriaEntity>> getAllCategories(){
+		List<CategoriaEntity> categorias = categoriaProvider.findAllCategoria();
 		return new ResponseEntity<>(categorias,HttpStatus.OK);
 	}
 	
 	@GetMapping("/getById/{id}")
-	public ResponseEntity<Categoria> findCategoria(@PathVariable("id") Long id){
-		Categoria categoria=categoriaProvider.findCategoriaById(id);
+	public ResponseEntity<CategoriaEntity> findCategoria(@PathVariable("id") Long id){
+		CategoriaEntity categoria=categoriaProvider.findCategoriaById(id);
 		return new ResponseEntity<>(categoria, HttpStatus.OK);
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<Categoria> addCategoria(@RequestBody Categoria categoria){
-		Categoria newCategoria= categoriaProvider.addCategoria(categoria);
+	public ResponseEntity<CategoriaEntity> addCategoria(@RequestBody CategoriaEntity categoria){
+		CategoriaEntity newCategoria= categoriaProvider.addCategoria(categoria);
 		return new ResponseEntity<>(newCategoria,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<Categoria> updateCategoria(@RequestBody Categoria categoria){
-		Categoria upcategoria= categoriaProvider.updateCategoria(categoria);
+	public ResponseEntity<CategoriaEntity> updateCategoria(@RequestBody CategoriaEntity categoria){
+		CategoriaEntity upcategoria= categoriaProvider.updateCategoria(categoria);
 		return new ResponseEntity<>(upcategoria, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Categoria> deleteCategory(@PathVariable("id") Long id) {
+	public ResponseEntity<CategoriaEntity> deleteCategory(@PathVariable("id") Long id) {
 		categoriaProvider.deleteCategoriaById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

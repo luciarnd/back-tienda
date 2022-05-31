@@ -2,8 +2,7 @@ package com.tienda.tienda.providerImpl;
 
 
 import com.tienda.tienda.dto.ProductoDTO;
-import com.tienda.tienda.entity.Pedido;
-import com.tienda.tienda.entity.Producto;
+import com.tienda.tienda.entity.ProductoEntity;
 import com.tienda.tienda.provider.ProductoProvider;
 import com.tienda.tienda.repository.CategoriaRepo;
 import com.tienda.tienda.repository.ProductoRepo;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -31,8 +29,8 @@ public class ProductoProviderImpl implements ProductoProvider {
     private ModelMapper modelMapper = new ModelMapper();
 
     @Override
-    public Producto addProducto(ProductoDTO productoDTO) {
-        Producto producto = modelMapper.map(productoDTO, Producto.class);
+    public ProductoEntity addProducto(ProductoDTO productoDTO) {
+        ProductoEntity producto = modelMapper.map(productoDTO, ProductoEntity.class);
         return productoRepo.save(producto);
     }
 
@@ -40,7 +38,7 @@ public class ProductoProviderImpl implements ProductoProvider {
     public List<ProductoDTO> findAllProductosDTO() {
         List<ProductoDTO> productos = new ArrayList<>();
         for(int i =0; i < productoRepo.findAll().size(); i++) {
-            Producto producto = productoRepo.findAll().get(i);
+            ProductoEntity producto = productoRepo.findAll().get(i);
             ProductoDTO productoDTO = modelMapper.map(producto, ProductoDTO.class);
             productos.add(productoDTO);
         }
@@ -48,13 +46,13 @@ public class ProductoProviderImpl implements ProductoProvider {
     }
 
     @Override
-    public Producto findProductoById(Long id) {
+    public ProductoEntity findProductoById(Long id) {
        return productoRepo.findProductoById(id).orElseThrow(() -> new IllegalArgumentException(error));
 
     }
 
     @Override
-    public List<Producto> findAllProductos() {
+    public List<ProductoEntity> findAllProductos() {
         return productoRepo.findAll();
     }
 
@@ -64,9 +62,9 @@ public class ProductoProviderImpl implements ProductoProvider {
     }
 
     @Override
-    public Producto updateProducto(ProductoDTO productoDTO) {
+    public ProductoEntity updateProducto(ProductoDTO productoDTO) {
         if (productoRepo.findProductoById(productoDTO.getId()).isPresent()) {
-            Producto producto = modelMapper.map(productoDTO, Producto.class);
+            ProductoEntity producto = modelMapper.map(productoDTO, ProductoEntity.class);
             return productoRepo.save(producto);
         } else {
             throw new IllegalArgumentException(error);

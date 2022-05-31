@@ -1,12 +1,8 @@
 package com.tienda.tienda.providerImpl;
 
 import com.tienda.tienda.dto.PedidoDTO;
-import com.tienda.tienda.dto.ProductoDTO;
-import com.tienda.tienda.entity.DetallePedido;
 import com.tienda.tienda.entity.Pedido;
-import com.tienda.tienda.entity.Producto;
 import com.tienda.tienda.provider.PedidoProvider;
-import com.tienda.tienda.repository.ClienteRepo;
 import com.tienda.tienda.repository.PedidoRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional

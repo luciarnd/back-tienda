@@ -2,7 +2,7 @@ package com.tienda.tienda.providerImpl;
 
 import java.io.ByteArrayInputStream;
 
-import javax.activation.DataSource;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
@@ -60,7 +60,9 @@ public class EmailProviderImpl implements EmailProvider {
             e.printStackTrace();
         }
 		}
-	 @Scheduled( cron = "0 0 0 1/7 * * ")
+
+	 @Scheduled( cron = "0 0 0 1/7 * *")
+
 	public void sendEmailAuto() {
 		try {
 			MimeMessage mimeMessage=javaMailSender.createMimeMessage();
